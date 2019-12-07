@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Vue Listing & Model Binding</title>
-    </head>
-    <body>
-        <div id="root">
 
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<head>
+    <title>Vue Listing & Model Binding</title>
+</head>
 
-        <script>          
+<body>
+    <div id="root">
+        <ul>
+            <li v-for="lang in languages" v-text="lang"></li>
+        </ul>
+        <input type="text" v-model="newLanguage">
+        <button @click="addNewLang">Save</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-            new Vue({
-                el : "#root",
-                data : {
-                    
+    <script>
+        const app = new Vue({
+            el: "#root",
+            data: {
+                newLanguage : '',
+                languages: [
+                    "English",
+                    "Spanish",
+                    "Burmese"
+                ]
+            },
+            methods: {
+                addNewLang() {
+                    this.languages.push(this.newLanguage);
+                    this.newLanguage = '';
                 }
-            })
-            
-        </script>
-    </body>
+            }
+        });
+
+        // document.querySelector("#button").addEventListener("click", () => {
+        //     const newLang = document.querySelector("#input").value;
+        //     app.languages.push(newLang);
+        //     document.querySelector("#input").value = "";
+        // })
+    </script>
+</body>
+
 </html>
