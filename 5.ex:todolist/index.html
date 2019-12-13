@@ -3,13 +3,31 @@
 
 <head>
     <title>Todolist - First Version</title>
-
+    <style>
+        .completedTask {
+            font-style: italic;
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 
 <body>
     <div id="root">
         <h1>To Do List</h1>
-        
+
+        <ul>
+            <li 
+            v-for="(item,index) in tasks" 
+            v-text="item.name" 
+            @click="changeComplete(index)"
+            :class="{'completedTask' : item.complete}"
+            >
+            </li>
+        </ul>
+
+        <input type="text" v-model="newTask" />
+        <button @click="addNewTask">Save new task</button>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -17,8 +35,24 @@
         const app = new Vue({
             el: "#root",
             data: {
+                newTask: '',
+                tasks: []
+            },
+            methods: {
+                addNewTask() {
+
+                    this.tasks.push({
+                        name: this.newTask,
+                        complete: false
+                    })
+                    this.newTask = ""
+                },
+                changeComplete(index) {
+                    this.tasks[index].complete = !this.tasks[index].complete;
+                }
             }
-            
+
+
         })
     </script>
 </body>

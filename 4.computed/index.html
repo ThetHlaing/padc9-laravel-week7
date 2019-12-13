@@ -7,7 +7,12 @@
 
 <body>
     <div id="root">
-        
+        {{ reverseMessage }}
+
+        <ul>
+            <li v-for="(item,index) in completedList"> {{index}} {{item.name}} </li>
+        </ul>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -15,7 +20,33 @@
         const app = new Vue({
             el: "#root",
             data: {
-                message: "hello world"
+                message: "hello world",
+                list: [{
+                        name: 'Wash',
+                        complete: true
+                    },
+                    {
+                        name: 'Watch',
+                        complete: false
+                    },
+                    {
+                        name: 'Play',
+                        complete: false
+                    },
+                    {
+                        name: 'Sing',
+                        complete: true
+                    },
+                ]
+            },
+            computed: {
+                reverseMessage() {
+                    return this.message.split("").reverse().join("")
+                },
+                completedList() {
+                    return this.list.filter(item => item.complete);
+                }
+
             }
         })
     </script>

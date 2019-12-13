@@ -16,7 +16,7 @@
 
 <body>
     <div id="root">
-        <h2 v-bind:class="{ 'aclass' : hasRedClass , 'anotherclass' : hasRedClass }">Some title here</h2>
+        <h2 :class="{ 'aclass' : hasRedClass , 'anotherclass' : hasRedClass }">Some title here</h2>
         <button :title="buttonTitle" @click="toggleColor">Some Button</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
