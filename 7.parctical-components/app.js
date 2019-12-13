@@ -24,7 +24,7 @@ Vue.component('card', {
             <div class="card blue-grey darken-1">
             <div class="card-content white-text">
                 <span class="card-title">{{title}}</span>
-                <p><slot></slot</p>
+                <p><slot></slot></p>
             </div>
             <div class="card-action">
                 <a href="#">This is a link</a>
